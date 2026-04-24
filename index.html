@@ -244,7 +244,7 @@ select:focus{outline:2px solid #185FA5;outline-offset:1px}
     <div class="acc-body" id="d-sys-body">
       <div class="ctrl-row"><div class="ctrl-label">E<sub>basal</sub> / &delta; (constitutive activity %)</div><div class="slider-row"><input type="range" min="0" max="30" step="0.5" value="0" id="d-delta" oninput="syncSlider('d-delta','d-delta-n');dUpd()"><input class="numbox" type="number" step="0.5" id="d-delta-n" value="0" oninput="syncNum('d-delta-n','d-delta');dUpd()"></div></div>
       <div class="ctrl-row"><div class="ctrl-label">n (transducer slope)</div><div class="slider-row"><input type="range" min="0.3" max="3" step="0.1" value="1" id="d-nslp" oninput="syncSlider('d-nslp','d-nslp-n');dUpd()"><input class="numbox" type="number" step="0.1" id="d-nslp-n" value="1" oninput="syncNum('d-nslp-n','d-nslp');dUpd()"></div></div>
-      <div class="ctrl-row"><div class="ctrl-label">R (receptor reserve, log scale)</div><div class="slider-row"><input type="range" min="-2" max="2" step="0.1" value="0" id="d-R" oninput="syncSlider('d-R','d-R-n');dUpd()"><input class="numbox" type="number" step="0.1" id="d-R-n" value="0" oninput="syncNum('d-R-n','d-R');dUpd()"></div></div>
+      <div class="ctrl-row"><div class="ctrl-label">R (receptor reserve)</div><div class="slider-row"><input type="range" min="-2" max="2" step="0.1" value="0" data-lindisp="1" id="d-R" oninput="syncSlider('d-R','d-R-n');dUpd()"><input class="numbox" type="number" step="any" id="d-R-n" value="1" oninput="syncNum('d-R-n','d-R');dUpd()"></div></div>
     </div>
   </div>
   <div class="card">
@@ -290,7 +290,7 @@ select:focus{outline:2px solid #185FA5;outline-offset:1px}
       <div id="eq1-bind"></div>
     </div>
     <span class="eq-cite" style="margin-top:.4rem">Black &amp; Leff (1983); extended for inverse agonism</span>
-    <p class="hint" style="margin-top:.4rem">R is adjustable for illustrative purposes only. Keep log R = 0 for quantitative use.</p>
+    <p class="hint" style="margin-top:.4rem">R in this model is adjustable for illustrative purposes only. Keep log R = 0 for quantitative use.</p>
   </div>
 </div>
 
@@ -306,9 +306,9 @@ select:focus{outline:2px solid #185FA5;outline-offset:1px}
       <svg class="acc-chevron" id="i-sys-chev" viewBox="0 0 14 14" fill="none" stroke="#9ca3af" stroke-width="1.5"><polyline points="2,4 7,10 12,4"/></svg>
     </button>
     <div class="acc-body" id="i-sys-body">
-      <div class="ctrl-row" id="i-L-row"><div class="ctrl-label">L (log scale) <span id="i-L-pct" style="font-size:11px;color:#9ca3af;font-weight:400">(≈2.0% basal)</span></div><div class="slider-row"><input type="range" min="-2.3" max="-0.3" step="0.1" value="-1.7" id="i-basal" oninput="syncSlider('i-basal','i-basal-n');iUpd()"><input class="numbox" type="number" step="0.1" id="i-basal-n" value="-1.7" oninput="syncNum('i-basal-n','i-basal');iUpd()"></div></div>
+      <div class="ctrl-row" id="i-L-row"><div class="ctrl-label">L (log scale) <span id="i-L-pct" style="font-size:11px;color:#9ca3af;font-weight:400">(≈2.0% basal)</span></div><div class="slider-row"><input type="range" min="-2.3" max="-0.3" step="0.1" value="-1.7" data-lindisp="1" id="i-basal" oninput="syncSlider('i-basal','i-basal-n');iUpd()"><input class="numbox" type="number" step="any" id="i-basal-n" value="0.02" oninput="syncNum('i-basal-n','i-basal');iUpd()"></div></div>
       <div class="ctrl-row"><div class="ctrl-label">n (transducer slope)</div><div class="slider-row"><input type="range" min="0.3" max="3" step="0.1" value="1" id="i-nslp" oninput="syncSlider('i-nslp','i-nslp-n');iUpd()"><input class="numbox" type="number" step="0.1" id="i-nslp-n" value="1" oninput="syncNum('i-nslp-n','i-nslp');iUpd()"></div></div>
-      <div class="ctrl-row"><div class="ctrl-label">R (receptor reserve, log scale)</div><div class="slider-row"><input type="range" min="-2" max="4" step="0.1" value="0" id="i-R" oninput="syncSlider('i-R','i-R-n');iUpd()"><input class="numbox" type="number" step="0.1" id="i-R-n" value="0" oninput="syncNum('i-R-n','i-R');iUpd()"></div></div>
+      <div class="ctrl-row"><div class="ctrl-label">R (receptor reserve)</div><div class="slider-row"><input type="range" min="-2" max="4" step="0.1" value="0" data-lindisp="1" id="i-R" oninput="syncSlider('i-R','i-R-n');iUpd()"><input class="numbox" type="number" step="any" id="i-R-n" value="1" oninput="syncNum('i-R-n','i-R');iUpd()"></div></div>
     </div>
   </div>
 
@@ -320,7 +320,7 @@ select:focus{outline:2px solid #185FA5;outline-offset:1px}
     <div class="acc-body open" id="i-dA-body">
       <div class="ctrl-row" style="margin-bottom:.4rem"><div class="ctrl-label">Name</div><input type="text" id="drugA-name" value="Drug A" style="font-size:12px;padding:3px 6px;border-radius:6px;border:1px solid #d1d5db;background:#fff;color:#1a1a1a;width:100%" oninput="drugAName=this.value;iUpd()"></div>
       <div class="ctrl-row"><div class="ctrl-label">log K<sub>i</sub> (M)</div><div class="slider-row"><input type="range" min="-10" max="-4" step="0.1" value="-7" id="lKA" oninput="syncSlider('lKA','lKA-n');iUpd()"><input class="numbox" type="number" step="0.1" id="lKA-n" value="-7" oninput="syncNum('lKA-n','lKA');iUpd()"></div></div>
-      <div class="ctrl-row" id="i-alphaA-row"><div class="ctrl-label">&alpha;<sub>A</sub> (intrinsic efficacy, log)</div><div class="slider-row"><input type="range" min="-2" max="4" step="0.01" value="2" id="i-alphaA-log" oninput="syncSlider('i-alphaA-log','i-alphaA-log-n');iUpd()"><input class="numbox" type="number" step="0.01" id="i-alphaA-log-n" value="2" oninput="syncNum('i-alphaA-log-n','i-alphaA-log');iUpd()"></div></div>
+      <div class="ctrl-row" id="i-alphaA-row"><div class="ctrl-label">&alpha;<sub>A</sub> (intrinsic efficacy, log)</div><div class="slider-row"><input type="range" min="-2" max="4" step="0.1" value="2" data-lindisp="1" id="i-alphaA-log" oninput="syncSlider('i-alphaA-log','i-alphaA-log-n');iUpd()"><input class="numbox" type="number" step="any" id="i-alphaA-log-n" value="100" oninput="syncNum('i-alphaA-log-n','i-alphaA-log');iUpd()"></div></div>
       <div class="ctrl-row" id="effA-row" style="display:none"><div class="ctrl-label">&varepsilon;<sub>A</sub> (intrinsic efficacy, %)</div><div class="slider-row"><input type="range" min="1" max="99" step="1" value="80" id="effA" oninput="syncSlider('effA','effA-n');iUpd()"><input class="numbox" type="number" step="1" id="effA-n" value="80" oninput="syncNum('effA-n','effA');iUpd()"></div></div>
     </div>
   </div>
@@ -336,14 +336,14 @@ select:focus{outline:2px solid #185FA5;outline-offset:1px}
       <div id="irrev-model-row" style="display:none;margin-bottom:.55rem"><div class="ctrl-label">Model</div><select id="irrev-submode" onchange="setIrrevSubMode(this.value)" style="font-size:12px;padding:3px 6px;border-radius:6px;border:1px solid #d1d5db;background:#fff;color:#1a1a1a;width:100%"><option value="simple" selected>Simple (Furchgott)</option><option value="hall">Hall (2000) — two-state</option></select></div>
       <div class="ctrl-row"><div class="ctrl-label" id="lKB-label">log K<sub>i</sub> (M)</div><div class="slider-row"><input type="range" min="-10" max="-4" step="0.1" value="-8" id="lKB" oninput="syncSlider('lKB','lKB-n');iUpd()"><input class="numbox" type="number" step="0.1" id="lKB-n" value="-8" oninput="syncNum('lKB-n','lKB');iUpd()"></div></div>
       <div id="sharedBCtrls">
-        <div class="ctrl-row" id="allost-beta-row"><div class="ctrl-label">&beta; (Drug B intrinsic efficacy, log)</div><div class="slider-row"><input type="range" min="-2" max="2" step="0.01" value="0" id="allost-beta-log" oninput="syncSlider('allost-beta-log','allost-beta-log-n');iUpd()"><input class="numbox" type="number" step="0.01" id="allost-beta-log-n" value="0" oninput="syncNum('allost-beta-log-n','allost-beta-log');iUpd()"></div></div>
+        <div class="ctrl-row" id="allost-beta-row"><div class="ctrl-label">&beta; (Drug B intrinsic efficacy, log)</div><div class="slider-row"><input type="range" min="-2" max="2" step="0.1" value="0" data-lindisp="1" id="allost-beta-log" oninput="syncSlider('allost-beta-log','allost-beta-log-n');iUpd()"><input class="numbox" type="number" step="any" id="allost-beta-log-n" value="1" oninput="syncNum('allost-beta-log-n','allost-beta-log');iUpd()"></div></div>
         <div class="ctrl-row" id="effB-row" style="display:none"><div class="ctrl-label">&varepsilon;<sub>B</sub> (Drug B efficacy, %)</div><div class="slider-row"><input type="range" min="0" max="99" step="1" value="0" id="effB" oninput="syncSlider('effB','effB-n');iUpd()"><input class="numbox" type="number" step="1" id="effB-n" value="0" oninput="syncNum('effB-n','effB');iUpd()"></div></div>
         <div id="comp-beta-hint" class="hint" style="display:none">&beta; = 0 &rarr; neutral antagonist</div>
         <div id="gaddum-effB-hint" class="hint" style="display:none">0% = neutral antagonist</div>
       </div>
       <div id="allostOnlyCtrls" style="display:none">
-        <div class="ctrl-row"><div class="ctrl-label" id="allost-gamma-label">&gamma; (binding cooperativity, log)</div><div class="slider-row"><input type="range" min="-2" max="2" step="0.01" value="0" id="allost-gamma-log" oninput="syncSlider('allost-gamma-log','allost-gamma-log-n');iUpd()"><input class="numbox" type="number" step="0.01" id="allost-gamma-log-n" value="0" oninput="syncNum('allost-gamma-log-n','allost-gamma-log');iUpd()"></div></div>
-        <div class="ctrl-row"><div class="ctrl-label" id="allost-delta-label">&delta; (activation cooperativity, log)</div><div class="slider-row"><input type="range" min="-2" max="2" step="0.01" value="0" id="allost-delta-log" oninput="syncSlider('allost-delta-log','allost-delta-log-n');iUpd()"><input class="numbox" type="number" step="0.01" id="allost-delta-log-n" value="0" oninput="syncNum('allost-delta-log-n','allost-delta-log');iUpd()"></div></div>
+        <div class="ctrl-row"><div class="ctrl-label" id="allost-gamma-label">&gamma; (binding cooperativity, log)</div><div class="slider-row"><input type="range" min="-2" max="2" step="0.1" value="0" data-lindisp="1" id="allost-gamma-log" oninput="syncSlider('allost-gamma-log','allost-gamma-log-n');iUpd()"><input class="numbox" type="number" step="any" id="allost-gamma-log-n" value="1" oninput="syncNum('allost-gamma-log-n','allost-gamma-log');iUpd()"></div></div>
+        <div class="ctrl-row"><div class="ctrl-label" id="allost-delta-label">&delta; (activation cooperativity, log)</div><div class="slider-row"><input type="range" min="-2" max="2" step="0.1" value="0" data-lindisp="1" id="allost-delta-log" oninput="syncSlider('allost-delta-log','allost-delta-log-n');iUpd()"><input class="numbox" type="number" step="any" id="allost-delta-log-n" value="1" oninput="syncNum('allost-delta-log-n','allost-delta-log');iUpd()"></div></div>
       </div>
       <div id="irrevCtrls" style="display:none"><div id="irrev-q-hint" class="hint" style="margin-top:.2rem">q = [B]/(K<sub>i</sub>+[B]) &mdash; E<sub>max</sub> depression</div></div>
       <div class="sep"></div>
@@ -511,6 +511,10 @@ select:focus{outline:2px solid #185FA5;outline-offset:1px}
       <div class="ctrl-row"><div class="ctrl-label">log k<sub>off</sub> (k<sub>2</sub>, min<sup>&minus;1</sup>)</div><div class="slider-row"><input type="range" min="-4" max="1" step="0.1" value="-1.5" id="kin-koffL" oninput="syncSlider('kin-koffL','kin-koffL-n');kinUpd()"><input class="numbox" type="number" id="kin-koffL-n" value="-1.5" oninput="syncNum('kin-koffL-n','kin-koffL');kinUpd()"></div></div>
       <div class="ctrl-row" style="margin-top:.3rem"><div class="ctrl-label">K<sub>D</sub> = <span id="kin-KD-display" style="font-size:12px;color:#185FA5;font-weight:500">10 nM</span></div></div>
       <div class="ctrl-row"><div class="ctrl-label">log [L<span class="sup-star">*</span>] (M)</div><div class="slider-row"><input type="range" min="-12" max="-4" step="0.25" value="-8" id="kin-logL" oninput="syncSlider('kin-logL','kin-logL-n');kinUpd()"><input class="numbox" type="number" id="kin-logL-n" value="-8" step="0.25" oninput="syncNum('kin-logL-n','kin-logL');kinUpd()"></div></div>
+      <div class="sep" id="kin-indiv-series-sep"></div>
+      <div class="card-title" style="margin-bottom:.4rem" id="kin-indiv-series-title">[L*] concentration series</div>
+      <div class="ctrl-row" id="kin-indiv-linc-row"><div class="ctrl-label">Log interval</div><div class="slider-row"><input type="range" min="0.25" max="1" step="0.25" value="0.5" id="kin-lindiv-inc" oninput="syncSlider('kin-lindiv-inc','kin-lindiv-inc-n');kinUpd()"><input class="numbox" type="number" step="0.25" id="kin-lindiv-inc-n" value="0.5" oninput="syncNum('kin-lindiv-inc-n','kin-lindiv-inc');kinUpd()"></div></div>
+      <div class="ctrl-row" id="kin-indiv-nC-row"><div class="ctrl-label">Number of concentrations</div><div class="curves-row"><button onclick="adjIndivN(-1)">&#8722;</button><span class="n" id="kin-nC-indiv-v">3</span><button onclick="adjIndivN(1)">+</button></div></div>
     </div>
   </div>
 
@@ -572,11 +576,111 @@ select:focus{outline:2px solid #185FA5;outline-offset:1px}
 
 <!-- TAB: Resources -->
 <div id="tab-resources" class="panel">
-<div style="max-width:760px;padding:.5rem 0">
+<div style="padding:.5rem 0">
   <div class="card-plain">
-    <div class="card-title">Resources</div>
-    <p style="font-size:13.5px;color:#374151;line-height:1.75;margin-bottom:.75rem">References and other materials will be listed here.</p>
-    <p style="font-size:13px;color:#9ca3af;line-height:1.7"><em>Content coming soon.</em></p>
+    <p style="font-size:12px;color:#6b7280;font-style:italic;margin-bottom:.75rem">If you have suggestions for papers to add to this list or additional comments/context you think should be added to any paper descriptions, please email <a href="mailto:admin@pharmexplorer.app" style="color:#185FA5;text-decoration:none">admin@pharmexplorer.app</a></p>
+    <div class="card-title">Influential Papers in Pharmacology</div>
+
+    <div style="margin-bottom:1.1rem;padding-bottom:1.1rem;border-bottom:1px solid #e5e7eb">
+      <div style="margin-bottom:.35rem"><a href="https://doi.org/10.1113/jphysiol.1905.sp001128" target="_blank" rel="noopener" style="font-size:13px;font-weight:600;color:#185FA5;text-decoration:none">Langley, J.N. (1905)</a><span style="font-size:13px;color:#6b7280"> &mdash; </span><em style="font-size:13px;color:#1a1a1a">On the reaction of cells and of nerve-endings to certain poisons</em><span style="font-size:11px;color:#9ca3af"> &mdash; Journal of Physiology, 33, 374&ndash;413</span></div>
+      <div style="font-size:13px;color:#374151;line-height:1.65">One of the first statements of a receptor theory, through experiments observing antagonism and acute desensitization. States clearly that the observations must be mediated by a "receptive substance" located on muscles, that produce actions in response to drugs in the absence of innervation.</div>
+    </div>
+
+    <div style="margin-bottom:1.1rem;padding-bottom:1.1rem;border-bottom:1px solid #e5e7eb">
+      <div style="margin-bottom:.35rem"><a href="https://doi.org/10.1113/jphysiol.1909.sp001344" target="_blank" rel="noopener" style="font-size:13px;font-weight:600;color:#185FA5;text-decoration:none">Hill, A.V. (1909)</a><span style="font-size:13px;color:#6b7280"> &mdash; </span><em style="font-size:13px;color:#1a1a1a">The mode of action of nicotine and curari, determined by the form of the contraction curve and the method of temperature coefficients</em><span style="font-size:11px;color:#9ca3af"> &mdash; Journal of Physiology, 39, 361&ndash;373</span></div>
+      <div style="font-size:13px;color:#374151;line-height:1.65">Math describing sigmoidal dose-response functions.</div>
+    </div>
+
+    <div style="margin-bottom:1.1rem;padding-bottom:1.1rem;border-bottom:1px solid #e5e7eb">
+      <div style="margin-bottom:.35rem"><a href="https://doi.org/10.1113/jphysiol.1926.sp002315" target="_blank" rel="noopener" style="font-size:13px;font-weight:600;color:#185FA5;text-decoration:none">Clark, A.J. (1926)</a><span style="font-size:13px;color:#6b7280"> &mdash; </span><em style="font-size:13px;color:#1a1a1a">The antagonism of acetylcholine by atropine</em><span style="font-size:11px;color:#9ca3af"> &mdash; Journal of Physiology, 61, 547&ndash;556</span></div>
+      <div style="font-size:13px;color:#374151;line-height:1.65">Established the law of mass action as the basis for drug-receptor interactions. See also: <a href="https://jpet.aspetjournals.org/article/S0022-3565(25)08300-4/fulltext" target="_blank" rel="noopener" style="color:#185FA5;text-decoration:none">Cushny 1914</a>, <a href="https://jpet.aspetjournals.org/article/S0022-3565(25)05707-6/fulltext" target="_blank" rel="noopener" style="color:#185FA5;text-decoration:none">Broom &amp; Clark 1923</a>, and <a href="https://doi.org/10.1113/jphysiol.1926.sp002280" target="_blank" rel="noopener" style="color:#185FA5;text-decoration:none">Gaddum 1926</a>.</div>
+    </div>
+
+    <div style="margin-bottom:1.1rem;padding-bottom:1.1rem;border-bottom:1px solid #e5e7eb">
+      <div style="margin-bottom:.35rem"><a href="https://pmc.ncbi.nlm.nih.gov/articles/PMC1394986/" target="_blank" rel="noopener" style="font-size:13px;font-weight:600;color:#185FA5;text-decoration:none">Gaddum, J.H. (1937)</a><span style="font-size:13px;color:#6b7280"> &mdash; </span><em style="font-size:13px;color:#1a1a1a">The quantitative effects of antagonist drugs</em><span style="font-size:11px;color:#9ca3af"> &mdash; Journal of Physiology, 89, 7P&ndash;9P</span></div>
+      <div style="font-size:13px;color:#374151;line-height:1.65">Summates work from the previous decade (see: <a href="https://doi.org/10.1113/jphysiol.1926.sp002315" target="_blank" rel="noopener" style="color:#185FA5;text-decoration:none">Clark 1926</a>, <a href="https://doi.org/10.1113/jphysiol.1926.sp002280" target="_blank" rel="noopener" style="color:#185FA5;text-decoration:none">Gaddum 1926</a>, <a href="https://doi.org/10.1113/jphysiol.1927.sp002424" target="_blank" rel="noopener" style="color:#185FA5;text-decoration:none">Clark 1927</a>, <a href="https://jpet.aspetjournals.org/article/S0022-3565(25)03339-7/fulltext" target="_blank" rel="noopener" style="color:#185FA5;text-decoration:none">Mendez 1928</a>, and <a href="https://jpet.aspetjournals.org/article/S0022-3565(25)08589-1/fulltext" target="_blank" rel="noopener" style="color:#185FA5;text-decoration:none">Nanda 1930</a>) and derives the first formal equation for competitive antagonism.</div>
+    </div>
+
+    <div style="margin-bottom:1.1rem;padding-bottom:1.1rem;border-bottom:1px solid #e5e7eb">
+      <div style="margin-bottom:.35rem"><a href="https://doi.org/10.1111/j.1476-5381.1949.tb00548.x" target="_blank" rel="noopener" style="font-size:13px;font-weight:600;color:#185FA5;text-decoration:none">Schild, H.O. (1949)</a><span style="font-size:13px;color:#6b7280"> &mdash; </span><em style="font-size:13px;color:#1a1a1a">pA<sub>x</sub> and competitive drug antagonism</em><span style="font-size:11px;color:#9ca3af"> &mdash; British Journal of Pharmacology, 4, 277&ndash;280</span></div>
+      <div style="font-size:13px;color:#374151;line-height:1.65">Expands upon previous work to introduce the concept of pA<sub>2</sub> and using Schild regression to quantitatively characterize interactions with antagonists. See also: <a href="https://doi.org/10.1111/j.1476-5381.1947.tb00336.x" target="_blank" rel="noopener" style="color:#185FA5;text-decoration:none">Schild 1947</a> and <a href="https://doi.org/10.1111/j.1476-5381.1959.tb00928.x" target="_blank" rel="noopener" style="color:#185FA5;text-decoration:none">Arunlakshana &amp; Schild 1959</a>.</div>
+    </div>
+
+    <div style="margin-bottom:1.1rem;padding-bottom:1.1rem;border-bottom:1px solid #e5e7eb">
+      <div style="margin-bottom:.35rem"><a href="https://doi.org/10.1111/j.1476-5381.1956.tb00006.x" target="_blank" rel="noopener" style="font-size:13px;font-weight:600;color:#185FA5;text-decoration:none">Stephenson, R.P. (1956)</a><span style="font-size:13px;color:#6b7280"> &mdash; </span><em style="font-size:13px;color:#1a1a1a">A modification of receptor theory</em><span style="font-size:11px;color:#9ca3af"> &mdash; British Journal of Pharmacology, 11, 379&ndash;393</span></div>
+      <div style="font-size:13px;color:#374151;line-height:1.65">Introduces efficacy, separating affinity from intrinsic activity. Demonstrates that an agonist need not fully occupy the receptors to produce a maximal response and that different drugs may have varying capacities to initiate a response and consequently occupy different proportions of the receptors when producing equal responses (partial agonism).</div>
+    </div>
+
+    <div style="margin-bottom:1.1rem;padding-bottom:1.1rem;border-bottom:1px solid #e5e7eb">
+      <div style="margin-bottom:.35rem"><span style="font-size:13px;font-weight:600;color:#374151">Furchgott, R.F. (1966)</span><span style="font-size:13px;color:#6b7280"> &mdash; </span><em style="font-size:13px;color:#1a1a1a">The use of beta-haloalkylamines in the differentiation of receptors and in the determination of dissociation constants of receptor-agonist complexes</em><span style="font-size:11px;color:#9ca3af"> &mdash; Advances in Drug Research, 3, 21&ndash;55</span></div>
+      <div style="font-size:13px;color:#374151;line-height:1.65">Introduces the receptor inactivation method for independently determining agonist affinity and efficacy. See also: <a href="https://doi.org/10.1111/j.1749-6632.1967.tb53817.x" target="_blank" rel="noopener" style="color:#185FA5;text-decoration:none">Furchgott &amp; Bursztyn 1967</a>.</div>
+    </div>
+
+    <div style="margin-bottom:1.1rem;padding-bottom:1.1rem;border-bottom:1px solid #e5e7eb">
+      <div style="margin-bottom:.35rem"><a href="https://link.springer.com/chapter/10.1007/978-1-349-00910-7_11" target="_blank" rel="noopener" style="font-size:13px;font-weight:600;color:#185FA5;text-decoration:none">Colquhoun, D. (1973)</a><span style="font-size:13px;color:#6b7280"> &mdash; </span><em style="font-size:13px;color:#1a1a1a">The relationship between classical and cooperative models for drug action</em><span style="font-size:11px;color:#9ca3af"> &mdash; In: Drug Receptors (H.P. Rang, ed.), Macmillan</span></div>
+      <div style="font-size:13px;color:#374151;line-height:1.65">A thorough review and comparison of binding theories and the coupling of receptor binding with a functional response.</div>
+    </div>
+
+    <div style="margin-bottom:1.1rem;padding-bottom:1.1rem;border-bottom:1px solid #e5e7eb">
+      <div style="margin-bottom:.35rem"><a href="https://doi.org/10.1016/0006-2952(73)90196-2" target="_blank" rel="noopener" style="font-size:13px;font-weight:600;color:#185FA5;text-decoration:none">Cheng, Y. &amp; Prusoff, W.H. (1973)</a><span style="font-size:13px;color:#6b7280"> &mdash; </span><em style="font-size:13px;color:#1a1a1a">Relationship between the inhibition constant (K<sub>i</sub>) and the concentration of inhibitor which causes 50 percent inhibition (IC<sub>50</sub>) of an enzymatic reaction</em><span style="font-size:11px;color:#9ca3af"> &mdash; Biochemical Pharmacology, 22, 3099&ndash;3108</span></div>
+      <div style="font-size:13px;color:#374151;line-height:1.65">Derives the Cheng-Prusoff equation, which converts IC<sub>50</sub> values from competition binding experiments to Ki by correcting for radioligand concentration and affinity.</div>
+    </div>
+
+    <div style="margin-bottom:1.1rem;padding-bottom:1.1rem;border-bottom:1px solid #e5e7eb">
+      <div style="margin-bottom:.35rem"><a href="https://doi.org/10.1016/S0021-9258(20)79672-9" target="_blank" rel="noopener" style="font-size:13px;font-weight:600;color:#185FA5;text-decoration:none">De Lean, A., Stadel, J.M., &amp; Lefkowitz, R.J. (1980)</a><span style="font-size:13px;color:#6b7280"> &mdash; </span><em style="font-size:13px;color:#1a1a1a">A ternary complex model explains the agonist-specific binding properties of the adenylate cyclase-coupled beta-adrenergic receptor</em><span style="font-size:11px;color:#9ca3af"> &mdash; Journal of Biological Chemistry, 255, 7108&ndash;7117</span></div>
+      <div style="font-size:13px;color:#374151;line-height:1.65">Introduced the ternary complex model, adding an "additional membrane component" to existing two-state models to account for receptor interactions with signaling proteins.</div>
+    </div>
+
+    <div style="margin-bottom:1.1rem;padding-bottom:1.1rem;border-bottom:1px solid #e5e7eb">
+      <div style="margin-bottom:.35rem"><a href="https://doi.org/10.1098/rspb.1983.0093" target="_blank" rel="noopener" style="font-size:13px;font-weight:600;color:#185FA5;text-decoration:none">Black, J.W. &amp; Leff, P. (1983)</a><span style="font-size:13px;color:#6b7280"> &mdash; </span><em style="font-size:13px;color:#1a1a1a">Operational models of pharmacological agonism</em><span style="font-size:11px;color:#9ca3af"> &mdash; Proceedings of the Royal Society B, 220, 141&ndash;162</span></div>
+      <div style="font-size:13px;color:#374151;line-height:1.65">Introduces the operational model of pharmacological agonism, a stimulus-response coupling framework that relates drug-receptor occupancy to tissue response through a transducer function. Formalizes efficacy as τ (the transducer ratio), separating it from affinity and providing a quantitative basis for comparing partial and full agonists. One of the most influential models in experimental pharmacology.</div>
+    </div>
+
+    <div style="margin-bottom:1.1rem;padding-bottom:1.1rem;border-bottom:1px solid #e5e7eb">
+      <div style="margin-bottom:.35rem"><a href="https://doi.org/10.1016/S0026-895X(25)15016-5" target="_blank" rel="noopener" style="font-size:13px;font-weight:600;color:#185FA5;text-decoration:none">Motulsky, H.J. &amp; Mahan, L.C. (1984)</a><span style="font-size:13px;color:#6b7280"> &mdash; </span><em style="font-size:13px;color:#1a1a1a">The kinetics of competitive radioligand binding predicted by the law of mass action</em><span style="font-size:11px;color:#9ca3af"> &mdash; Molecular Pharmacology, 25, 1&ndash;9</span></div>
+      <div style="font-size:13px;color:#374151;line-height:1.65">Establishes equations defining the binding kinetics of two ligands at a competitive site.</div>
+    </div>
+
+    <div style="margin-bottom:1.1rem;padding-bottom:1.1rem;border-bottom:1px solid #e5e7eb">
+      <div style="margin-bottom:.35rem"><a href="https://molpharm-aspetjournals-org/article/S0026-895X(25)14182-5/fulltext" target="_blank" rel="noopener" style="font-size:13px;font-weight:600;color:#185FA5;text-decoration:none">Ehlert, F.J. (1985)</a><span style="font-size:13px;color:#6b7280"> &mdash; </span><em style="font-size:13px;color:#1a1a1a">The relationship between muscarinic receptor occupancy and adenylate cyclase inhibition in the rabbit myocardium</em><span style="font-size:11px;color:#9ca3af"> &mdash; Molecular Pharmacology, 28, 410&ndash;421</span></div>
+      <div style="font-size:13px;color:#374151;line-height:1.65">Experimental illustration of the ternary complex model, demonstrates that addition of GTP alters agonist binding and that the magnitude of this effect is proportional to agonist efficacy.</div>
+    </div>
+
+    <div style="margin-bottom:1.1rem;padding-bottom:1.1rem;border-bottom:1px solid #e5e7eb">
+      <div style="margin-bottom:.35rem"><a href="https://doi.org/10.1016/S0021-9258(18)53442-6" target="_blank" rel="noopener" style="font-size:13px;font-weight:600;color:#185FA5;text-decoration:none">Samama, P. et al. (1993)</a><span style="font-size:13px;color:#6b7280"> &mdash; </span><em style="font-size:13px;color:#1a1a1a">A mutation-induced activated state of the beta2-adrenergic receptor</em><span style="font-size:11px;color:#9ca3af"> &mdash; Journal of Biological Chemistry, 268, 4625&ndash;4636</span></div>
+      <div style="font-size:13px;color:#374151;line-height:1.65">Provided the first strong evidence for constitutive receptor activity, prompting extension of existing models to include receptor isomerization. Promotes further study on the molecular nature of receptor activation.</div>
+    </div>
+
+    <div style="margin-bottom:1.1rem;padding-bottom:1.1rem;border-bottom:1px solid #e5e7eb">
+      <div style="margin-bottom:.35rem"><a href="https://doi.org/10.1016/S0165-6147(00)88989-0" target="_blank" rel="noopener" style="font-size:13px;font-weight:600;color:#185FA5;text-decoration:none">Leff, P. (1995)</a><span style="font-size:13px;color:#6b7280"> &mdash; </span><em style="font-size:13px;color:#1a1a1a">The two-state model of receptor activation</em><span style="font-size:11px;color:#9ca3af"> &mdash; Trends in Pharmacological Sciences, 16, 89&ndash;97</span></div>
+      <div style="font-size:13px;color:#374151;line-height:1.65">Summarizes the two-state model and expands its interpretation in the context of constitutive activity.</div>
+    </div>
+
+    <div style="margin-bottom:1.1rem;padding-bottom:1.1rem;border-bottom:1px solid #e5e7eb">
+      <div style="margin-bottom:.35rem"><a href="https://doi.org/10.1016/S0165-6147(00)89032-X" target="_blank" rel="noopener" style="font-size:13px;font-weight:600;color:#185FA5;text-decoration:none">Kenakin, T. (1995)</a><span style="font-size:13px;color:#6b7280"> &mdash; </span><em style="font-size:13px;color:#1a1a1a">Agonist-receptor efficacy II: Agonist trafficking of receptor signals</em><span style="font-size:11px;color:#9ca3af"> &mdash; Trends in Pharmacological Sciences, 16, 232&ndash;238</span></div>
+      <div style="font-size:13px;color:#374151;line-height:1.65">Discusses instances of what eventually becomes known as functional selectivity or biased agonism, and evaluates how these findings may or may not fit within existing frameworks of receptor theory.</div>
+    </div>
+
+    <div style="margin-bottom:1.1rem;padding-bottom:1.1rem;border-bottom:1px solid #e5e7eb">
+      <div style="margin-bottom:.35rem"><a href="https://doi.org/10.1124/mol.58.6.1412" target="_blank" rel="noopener" style="font-size:13px;font-weight:600;color:#185FA5;text-decoration:none">Hall, D.A. (2000)</a><span style="font-size:13px;color:#6b7280"> &mdash; </span><em style="font-size:13px;color:#1a1a1a">Modeling the functional effects of allosteric modulators at pharmacological receptors: An extension of the two-state model of receptor activation</em><span style="font-size:11px;color:#9ca3af"> &mdash; Molecular Pharmacology, 58, 1412&ndash;1423</span></div>
+      <div style="font-size:13px;color:#374151;line-height:1.65">Extends the two-state model to incorporate allosteric modulators, deriving equations for how modulators shift both agonist affinity and the basal active-state equilibrium.</div>
+    </div>
+
+    <div style="margin-bottom:1.1rem;padding-bottom:1.1rem;border-bottom:1px solid #e5e7eb">
+      <div style="margin-bottom:.35rem"><a href="https://doi.org/10.1124/jpet.105.090886" target="_blank" rel="noopener" style="font-size:13px;font-weight:600;color:#185FA5;text-decoration:none">Ehlert, F.J. (2005)</a><span style="font-size:13px;color:#6b7280"> &mdash; </span><em style="font-size:13px;color:#1a1a1a">Analysis of allosterism in functional assays</em><span style="font-size:11px;color:#9ca3af"> &mdash; Journal of Pharmacology and Experimental Therapeutics, 315, 740&ndash;754</span></div>
+      <div style="font-size:13px;color:#374151;line-height:1.65">Quantitative analysis of allosteric interactions in functional systems.</div>
+    </div>
+
+    <div style="margin-bottom:1.1rem;padding-bottom:1.1rem;border-bottom:1px solid #e5e7eb">
+      <div style="margin-bottom:.35rem"><a href="https://doi.org/10.1038/sj.bjp.0702164" target="_blank" rel="noopener" style="font-size:13px;font-weight:600;color:#185FA5;text-decoration:none">Colquhoun, D. (2009)</a><span style="font-size:13px;color:#6b7280"> &mdash; </span><em style="font-size:13px;color:#1a1a1a">Binding, gating, affinity and efficacy: The interpretation of structure-activity relationships for agonists and of the effects of mutating receptors</em><span style="font-size:11px;color:#9ca3af"> &mdash; British Journal of Pharmacology, 125, 924&ndash;947</span></div>
+      <div style="font-size:13px;color:#374151;line-height:1.65">Review that revisits models of binding and efficacy and their application to modern pharmacological methods, particularly experiments involving mutated receptors.</div>
+    </div>
+
+    <div style="margin-bottom:.25rem">
+      <div style="margin-bottom:.35rem"><a href="https://doi.org/10.1038/nrd3954" target="_blank" rel="noopener" style="font-size:13px;font-weight:600;color:#185FA5;text-decoration:none">Kenakin, T. &amp; Christopoulos, A. (2013)</a><span style="font-size:13px;color:#6b7280"> &mdash; </span><em style="font-size:13px;color:#1a1a1a">Signalling bias in new drug discovery: Detection, quantification and therapeutic impact</em><span style="font-size:11px;color:#9ca3af"> &mdash; Nature Reviews Drug Discovery, 12, 205&ndash;216</span></div>
+      <div style="font-size:13px;color:#374151;line-height:1.65">Thorough review on biased agonism, how it can be measured, and how it might be applied to drug discovery, in the context of receptor theory models.</div>
+    </div>
+
   </div>
 </div>
 </div>
@@ -584,6 +688,8 @@ select:focus{outline:2px solid #185FA5;outline-offset:1px}
 <script>
 var nC=4;
 var nCkin=3;
+var nCindiv=3;
+function adjIndivN(d){nCindiv=Math.max(1,Math.min(7,nCindiv+d*2));var el=g('kin-nC-indiv-v');if(el)el.textContent=nCindiv;kinUpd();}
 var drugAName='Drug A';
 var drugChart=null,drugBindChart=null,interChart=null,interBindChart=null,schildChart=null;
 var DRUG_COLORS_NORMAL=['#3F51B5','#FF7F0E','#4CAF50','#D62728','#FFC107','#9C27B0'];
@@ -604,20 +710,44 @@ var drugDefs=[
 var visibleDrugs=2;
 
 function g(id){return document.getElementById(id);}
-function v(id){return parseFloat(g(id).value);}
-
 function stepDecimals(s){var str=s.step||'1';var dot=str.indexOf('.');return dot<0?0:str.length-dot-1;}
+function linDisplay(logVal){
+  var lin=Math.pow(10,logVal);
+  if(lin>=100)return String(Math.round(lin));
+  if(lin>=10)return String(parseFloat(lin.toFixed(1)));
+  if(lin>=1)return String(parseFloat(lin.toFixed(2)));
+  return String(parseFloat(lin.toFixed(3)));
+}
+function v(id){
+  var el=g(id);if(!el)return NaN;
+  var dec=stepDecimals(el);
+  return +(parseFloat(el.value).toFixed(dec))||0;
+}
 function syncSlider(sId,nId){
   var s=g(sId),n=g(nId);if(!s||!n)return;
-  n.value=parseFloat(s.value).toFixed(stepDecimals(s));
+  if(s.dataset.lindisp){n.value=linDisplay(v(sId));}
+  else{n.value=v(sId).toFixed(stepDecimals(s));}
 }
 function syncNum(nId,sId){
   var s=g(sId),n=g(nId);if(!s||!n)return;
-  var val=parseFloat(n.value),mn=parseFloat(s.min),mx=parseFloat(s.max);
+  var val=parseFloat(n.value);
   if(isNaN(val))return;
-  val=Math.max(mn,Math.min(mx,val));
-  s.value=val;
-  n.value=parseFloat(s.value).toFixed(stepDecimals(s));
+  if(s.dataset.lindisp){
+    if(val<=0)return;
+    var logVal=Math.max(parseFloat(s.min),Math.min(parseFloat(s.max),Math.log10(val)));
+    s.value=logVal;
+    n.value=linDisplay(v(sId));
+  }else{
+    var mn=parseFloat(s.min),mx=parseFloat(s.max);
+    val=Math.max(mn,Math.min(mx,val));
+    s.value=val;
+    n.value=parseFloat(s.value).toFixed(stepDecimals(s));
+  }
+}
+function setSlVal(id,val){
+  var el=g(id);if(el)el.value=val;
+  var nel=g(id+'-n');
+  if(nel){if(el&&el.dataset.lindisp)nel.value=linDisplay(val);else nel.value=val;}
 }
 function toggleAcc(bId,cId){
   var b=g(bId),c=g(cId);if(!b||!c)return;
@@ -709,7 +839,6 @@ function allostEhlert(logX,logKA,tauA,logKB,tauB,alpha,beta,n,B){
     return 100*num/den;
   });
 }
-function setSlVal(id,val){var el=g(id);if(el)el.value=val;var nel=g(id+'-n');if(nel)nel.value=val;}
 function compCurve(logX,logKA,tauA,logKB,tauB,n,delta,B,KB){
   if(tauB===0){
     return logX.map(function(lx){
@@ -1049,7 +1178,7 @@ function iUpd(){
   var sep='';
   var eqHTML='';
   if(mode==='comp'&&!useGaddum){
-    eqHTML+='<div class="eq-section"><div style="display:flex;flex-wrap:wrap;align-items:baseline;gap:.5rem .75rem"><div id="eq2-comp-rho"></div>'+sep+'<div id="eq2-hall-e"></div></div><span class="eq-cite">Hall (2000)</span></div>';
+    eqHTML+='<div class="eq-section"><div style="display:flex;flex-wrap:wrap;align-items:baseline;gap:.5rem .75rem"><div id="eq2-comp-rho"></div>'+sep+'<div id="eq2-hall-e"></div>'+sep+'<div id="eq2-comp-hall-tau"></div>'+sep+'<div id="eq2-comp-hall-bind"></div></div><span class="eq-cite">Hall (2000)</span></div>';
   } else if(useGaddum){
     var _eBq=v('effB'),_isNeut=(!_eBq||_eBq<=0);
     if(_isNeut){eqHTML+='<div class="eq-section"><div style="display:flex;flex-wrap:wrap;align-items:baseline;gap:.5rem .75rem"><div id="eq2-comp-neut-e"></div>'+sep+'<div id="eq2-comp-neut-bind"></div>'+sep+'<div id="eq2-comp-tau-a"></div></div><span class="eq-cite">Gaddum (1937); Black &amp; Leff (1983)</span></div>';}
@@ -1059,9 +1188,9 @@ function iUpd(){
   } else if(mode==='allost'&&useEhlert){
     eqHTML+='<div class="eq-section"><div style="display:flex;flex-wrap:wrap;align-items:baseline;gap:.5rem .75rem"><div id="eq2-allost-s"></div>'+sep+'<div id="eq2-allost-tauab"></div>'+sep+'<div id="eq2-allost-bind"></div></div><span class="eq-cite">Black &amp; Leff (1983); Ehlert (2005)</span></div>';
   } else if(mode==='allost'){
-    eqHTML+='<div class="eq-section"><div style="display:flex;flex-wrap:wrap;align-items:baseline;gap:.5rem .75rem"><div id="eq2-allost-rho"></div>'+sep+'<div id="eq2-hall-e"></div></div><span class="eq-cite">Hall (2000)</span></div>';
+    eqHTML+='<div class="eq-section"><div style="display:flex;flex-wrap:wrap;align-items:baseline;gap:.5rem .75rem"><div id="eq2-allost-rho"></div>'+sep+'<div id="eq2-hall-e"></div>'+sep+'<div id="eq2-allost-hall-tau"></div>'+sep+'<div id="eq2-allost-hall-bind"></div>'+sep+'<div id="eq2-allost-Z"></div>'+sep+'<div id="eq2-allost-Zs"></div></div><span class="eq-cite">Hall (2000)</span></div>';
   } else if(mode==='irrev'&&!useSimpleIrrev){
-    eqHTML+='<div class="eq-section"><div style="display:flex;flex-wrap:wrap;align-items:baseline;gap:.5rem .75rem"><div id="eq2-irrev-q"></div>'+sep+'<div id="eq2-hall-e"></div></div><span class="eq-cite">Hall (2000); Furchgott (1966)</span></div>';
+    eqHTML+='<div class="eq-section"><div style="display:flex;flex-wrap:wrap;align-items:baseline;gap:.5rem .75rem"><div id="eq2-irrev-q"></div>'+sep+'<div id="eq2-hall-e"></div>'+sep+'<div id="eq2-irrev-hall-tau"></div>'+sep+'<div id="eq2-irrev-hall-bind"></div></div><span class="eq-cite">Hall (2000); Furchgott (1966)</span></div>';
   }
   if(!useHall){eqHTML+='<p class="hint" style="margin-top:.4rem">R is adjustable for illustrative purposes only. Keep log R = 0 for quantitative use.</p>';}
 
@@ -1116,7 +1245,7 @@ function iUpd(){
       });
     }
     var om=Math.max.apply(null,ys),ec=findEC50(logX,ys,0),ecs=ec!==null?fmtConc(ec):'n/a',DR='&mdash;';
-    if(aloneEC50!==null&&ec!==null){var drv=Math.pow(10,ec-aloneEC50);if(drv>1){schildPts.push({x:lBi,y:Math.log10(drv-1)});DR=drv.toFixed(2);}}
+    if(aloneEC50!==null&&ec!==null){var drv=Math.pow(10,ec-aloneEC50);DR=drv.toFixed(2);if(drv>1)schildPts.push({x:lBi,y:Math.log10(drv-1)});}
     tableRows+='<tr><td class="lbl"><span class="dot-cell"><span style="width:12px;height:0;border-top:2px dashed '+col+';display:inline-block;flex-shrink:0"></span>+B '+cl+'</span></td><td>'+ecs+'</td><td>'+om.toFixed(1)+'</td><td>'+DR+'</td></tr>';
     stimDs.push({label:'+B '+cl,data:ys.map(function(y,j){return{x:logX[j],y:y};}),borderColor:col,borderWidth:2,borderDash:[6,3],pointRadius:0,tension:0.3});
     bindDs.push({label:'+B '+cl,data:bindData,borderColor:col,borderWidth:2,borderDash:[6,3],pointRadius:0,tension:0.3});
@@ -1163,10 +1292,30 @@ function iUpd(){
       if(elBind)katex.render('\\displaystyle f_A=\\frac{\\frac{[A]}{K_A}+\\alpha\\frac{[A][B]}{K_AK_B}}{1+\\frac{[A]}{K_A}+\\frac{[B]}{K_B}+\\alpha\\frac{[A][B]}{K_AK_B}}',elBind,kOpts);
     } else if(mode==='allost'){
       var elRho=document.getElementById('eq2-allost-rho');
-      if(elRho)katex.render('\\displaystyle \\rho=\\frac{L(1+\\alpha K_A[A]+\\beta M_B[B]+\\gamma\\delta\\alpha\\beta K_AM_B[A][B])}{(1+K_A[A]+M_B[B]+\\gamma K_AM_B[A][B])+L(1+\\alpha K_A[A]+\\beta M_B[B]+\\gamma\\delta\\alpha\\beta K_AM_B[A][B])}',elRho,kOpts);
+      if(elRho)katex.render('\\displaystyle \\rho=\\frac{LZ^*}{Z+LZ^*}',elRho,kOpts);
+      var elZ=document.getElementById('eq2-allost-Z');
+      if(elZ)katex.render('\\displaystyle Z=1+K_A[A]+M_B[B]+\\gamma K_AM_B[A][B]',elZ,kOpts);
+      var elZs=document.getElementById('eq2-allost-Zs');
+      if(elZs)katex.render('\\displaystyle Z^*=1+\\alpha K_A[A]+\\beta M_B[B]+\\gamma\\delta\\alpha\\beta K_AM_B[A][B]',elZs,kOpts);
     } else if(mode==='irrev'&&!useSimpleIrrev){
       var elQ=document.getElementById('eq2-irrev-q');
       if(elQ)katex.render('\\displaystyle q=\\frac{[B]}{K_B+[B]}\\quad \\tau_{\\mathrm{app}}=\\tau(1-q)',elQ,kOpts);
+    }
+    /* Hall-mode τ and binding equations */
+    if(useHall){
+      var tauHallId=mode==='comp'?'eq2-comp-hall-tau':mode==='allost'?'eq2-allost-hall-tau':'eq2-irrev-hall-tau';
+      var elTauH=document.getElementById(tauHallId);
+      if(elTauH)katex.render('\\displaystyle \\tau=R',elTauH,kOpts);
+      if(mode==='comp'&&!useGaddum){
+        var elBHC=document.getElementById('eq2-comp-hall-bind');
+        if(elBHC)katex.render('\\displaystyle f_A=\\frac{K_A[A](1+\\alpha L)}{(1+K_A[A]+M_B[B])+L(1+\\alpha K_A[A]+\\beta M_B[B])}',elBHC,kOpts);
+      } else if(mode==='allost'){
+        var elBHA=document.getElementById('eq2-allost-hall-bind');
+        if(elBHA)katex.render('\\displaystyle f_A=\\frac{K_A[A](1+\\alpha L)+\\gamma K_AM_B[A][B](1+\\delta\\alpha\\beta L)}{Z+LZ^*}',elBHA,kOpts);
+      } else if(mode==='irrev'&&!useSimpleIrrev){
+        var elBHI=document.getElementById('eq2-irrev-hall-bind');
+        if(elBHI)katex.render('\\displaystyle f_A=(1-q)\\,\\frac{K_A[A](1+\\alpha L)}{(1+K_A[A])+L(1+\\alpha K_A[A])}',elBHI,kOpts);
+      }
     }
   }
   g('interTableBody').innerHTML=tableRows;
@@ -1411,14 +1560,16 @@ function kinUpd(){
   }
 
   if(kinMode==='indiv'){
-    /* Half-log spacing: logL−0.5, logL, logL+0.5 */
-    var logLvals=[logL-0.5,logL,logL+0.5];
+    var lindivInc=v('kin-lindiv-inc')||0.5;
+    var halfN=Math.floor(nCindiv/2);
+    var logLvals=[];
+    for(var ci=-halfN;ci<=halfN;ci++)logLvals.push(logL+ci*lindivInc);
     var Lvals=logLvals.map(function(ll){return Math.pow(10,ll);});
     var Llabels=logLvals.map(function(ll){return fmtConc(ll);});
     var assocDs=[],dissocDs=[];
-    for(var ci=0;ci<3;ci++){
+    for(var ci=0;ci<nCindiv;ci++){
       var Li=Lvals[ci];
-      var col=SHIFT_COLORS[ci];
+      var col=SHIFT_COLORS[ci%SHIFT_COLORS.length];
       var KA=konL*Li+koffL;
       var RLeq_pct=Li/(Li+KD_L)*100;
       (function(col2,lbl,KA2,RLeq_pct2){
@@ -1438,32 +1589,43 @@ function kinUpd(){
     var keyEl=g('kin-key-body');
     if(keyEl){
       var tHalfDiss=Math.LN2/koffL;
-      var tauRes=1/koffL;
+
       var tblRows='';
-      for(var ti=0;ti<3;ti++){
+      for(var ti=0;ti<nCindiv;ti++){
         var KAi=konL*Lvals[ti]+koffL;
         var tHA=Math.LN2/KAi;
-        var lsym='<span style="width:18px;height:2px;background:'+SHIFT_COLORS[ti]+';display:inline-block;flex-shrink:0;border-radius:1px;vertical-align:middle"></span>';
-        tblRows+='<tr><td class="lbl"><span class="dot-cell">'+lsym+'&ensp;'+Llabels[ti]+'</span></td><td>'+fmtTime(tHA)+'</td></tr>';
+        var kobsStr=(function(k){
+  if(k>=1000)return Math.round(k).toString();
+  if(k>=100)return k.toFixed(1).replace(/\.?0+$/,'');
+  if(k>=10)return k.toFixed(2).replace(/\.?0+$/,'');
+  if(k>=1)return k.toFixed(3).replace(/\.?0+$/,'');
+  if(k>=0.1)return k.toFixed(3);
+  if(k>=0.01)return k.toFixed(3);
+  return k.toFixed(3);
+})(KAi)+' min\u207b\u00b9';
+        var lsym='<span style="width:18px;height:2px;background:'+SHIFT_COLORS[ti%SHIFT_COLORS.length]+';display:inline-block;flex-shrink:0;border-radius:1px;vertical-align:middle"></span>';
+        tblRows+='<tr><td class="lbl"><span class="dot-cell">'+lsym+'&ensp;'+Llabels[ti]+'</span></td><td>'+kobsStr+'</td><td>'+fmtTime(tHA)+'</td></tr>';
       }
       keyEl.innerHTML=
-        '<table class="data-table"><thead><tr><th>[L<span class="sup-star">*</span>]</th><th>t<sub>\u00bd,assoc</sub></th></tr></thead><tbody>'+tblRows+'</tbody></table>'+
-        '<div style="margin-top:.5rem;font-size:11px;color:#6b7280;line-height:1.9">&tau;<sub>res</sub> = '+fmtTime(tauRes)+'<br>t<sub>\u00bd,dissoc</sub> = '+fmtTime(tHalfDiss)+'</div>';
+        '<table class="data-table"><thead><tr><th>[L<span class="sup-star">*</span>]</th><th>k<sub>obs</sub></th><th>t<sub>\u00bd,assoc</sub></th></tr></thead><tbody>'+tblRows+'</tbody></table>'+
+        '<div style="margin-top:.5rem;font-size:11px;color:#6b7280">t<sub>\u00bd,dissoc</sub> = '+fmtTime(tHalfDiss)+'</div>';
     }
 
     var eqEl=g('kin-eq-content');
     if(eqEl){
-      eqEl.innerHTML='<div class="eq-section"><div style="display:flex;flex-wrap:wrap;align-items:center;gap:.75rem 1.5rem"><div id="kin-eq-assoc"></div><div id="kin-eq-assoc-KA"></div><div id="kin-eq-assoc-KD"></div><div id="kin-eq-dissoc"></div></div><span class="eq-cite" style="margin-top:.4rem">Motulsky &amp; Mahan (1984), Eqs. 2 &amp; 3</span></div>';
+      eqEl.innerHTML='<div class="eq-section"><div style="display:flex;flex-wrap:wrap;align-items:center;gap:.75rem 1.5rem"><div id="kin-eq-assoc"></div><div id="kin-eq-assoc-kobs"></div><div id="kin-eq-assoc-KD"></div><div id="kin-eq-dissoc"></div><div id="kin-eq-thalf-dissoc"></div></div><span class="eq-cite" style="margin-top:.4rem">Motulsky &amp; Mahan (1984), Eqs. 2 &amp; 3</span></div>';
       if(typeof katex!=='undefined'){
         var kOpts={displayMode:false,throwOnError:false};
         var el1=g('kin-eq-assoc');
-        if(el1)katex.render('\\displaystyle [RL](t)=\\frac{[L]}{[L]+K_D}\\!\\left(1-e^{-K_A t}\\right)',el1,kOpts);
-        var elKA=g('kin-eq-assoc-KA');
-        if(elKA)katex.render('\\displaystyle K_A=k_1[L]+k_2',elKA,kOpts);
+        if(el1)katex.render('\\displaystyle [RL](t)=\\frac{[L]}{[L]+K_D}\\!\\left(1-e^{-k_{\\mathrm{obs}} t}\\right)',el1,kOpts);
+        var elKobs=g('kin-eq-assoc-kobs');
+        if(elKobs)katex.render('\\displaystyle k_{\\mathrm{obs}}=k_1[L]+k_2',elKobs,kOpts);
         var elKD=g('kin-eq-assoc-KD');
         if(elKD)katex.render('\\displaystyle K_D=k_2/k_1',elKD,kOpts);
         var el2=g('kin-eq-dissoc');
         if(el2)katex.render('\\displaystyle [RL]_{\\mathrm{diss}}(t)=[RL]_{eq}\\cdot e^{-k_2 t}',el2,kOpts);
+        var elThd=g('kin-eq-thalf-dissoc');
+        if(elThd)katex.render('\\displaystyle t_{\\tfrac{1}{2},\\mathrm{dissoc}}=\\frac{\\ln 2}{k_2}',elThd,kOpts);
       }
     }
   } else {
@@ -1551,6 +1713,7 @@ function kinUpd(){
 function setKinMode(m){
   var sel=g('header-kinMode');if(sel)sel.value=m;
   var cc=g('kin-comp-card');if(cc)cc.style.display=m==='comp'?'':'none';
+  ['kin-indiv-series-sep','kin-indiv-series-title','kin-indiv-linc-row','kin-indiv-nC-row'].forEach(function(id){var el=g(id);if(el)el.style.display=m==='indiv'?'':'none';});
   var ich=g('kin-indiv-charts');if(ich)ich.style.display=m==='indiv'?'flex':'none';
   var cch=g('kin-comp-chart-wrap');if(cch)cch.style.display=m==='comp'?'':'none';
   var dissEl=g('kin-diss-section');if(dissEl)dissEl.style.display=m==='comp'?'none':'';
@@ -1648,7 +1811,7 @@ setTimeout(function(){
     <button class="about-close" onclick="closeAbout()" aria-label="Close">&times;</button>
     <div class="about-title">About</div>
     <div class="about-body">
-      <p>PharmExplorer.v1.1 &nbsp;2026</p>
+      <p>PharmExplorer v2.1.1 &nbsp;2026</p>
       <p>Created by Shawn Flynn</p>
       <p>Code generated using Claude Sonnet 4.6</p>
     </div>

@@ -159,12 +159,15 @@ select:focus{outline:2px solid #185FA5;outline-offset:1px}
 .drawer-overlay{position:fixed;inset:0;z-index:490;display:none}
 .hbg-feedback-tip.tip-active{display:block}
 
+.show-mobile{display:none}
 @media(max-width:900px){
   .tab{display:none!important}
   .tabs{min-height:52px;padding:0 .75rem}
   .mobile-tab-label{display:inline-flex;align-items:center}
   .mob-nav-section{display:block}
   .desktop-ham-item{display:none!important}
+  .hide-mobile{display:none}
+  .show-mobile{display:inline}
   .layout1,.layout2{display:block}
   .chart-wrap{height:auto!important;aspect-ratio:4/3}
   .panel.active{padding-bottom:56px}
@@ -225,7 +228,8 @@ select:focus{outline:2px solid #185FA5;outline-offset:1px}
         <option value="comp">Competition</option>
       </select>
     </div>
-    <div style="margin-left:auto;padding-right:1rem">
+    <div style="margin-left:auto;display:flex;align-items:center;gap:.75rem;padding-right:1rem">
+      <span id="gen-header-title" style="display:none;font-size:13px;color:#6b7280;white-space:nowrap;font-weight:500" class="hide-mobile">Hypothetical data generator</span>
       <button class="hamburger-btn" onclick="toggleHamburger()" id="hamburger-btn" aria-label="Menu"><span></span><span></span><span></span></button>
     </div>
   </div>
@@ -244,7 +248,7 @@ select:focus{outline:2px solid #185FA5;outline-offset:1px}
     <div class="acc-body" id="d-sys-body">
       <div class="ctrl-row"><div class="ctrl-label">E<sub>basal</sub> / &delta; (constitutive activity %)</div><div class="slider-row"><input type="range" min="0" max="30" step="0.5" value="0" id="d-delta" oninput="syncSlider('d-delta','d-delta-n');dUpd()"><input class="numbox" type="number" step="0.5" id="d-delta-n" value="0" oninput="syncNum('d-delta-n','d-delta');dUpd()"></div></div>
       <div class="ctrl-row"><div class="ctrl-label">n (transducer slope)</div><div class="slider-row"><input type="range" min="0.3" max="3" step="0.1" value="1" id="d-nslp" oninput="syncSlider('d-nslp','d-nslp-n');dUpd()"><input class="numbox" type="number" step="0.1" id="d-nslp-n" value="1" oninput="syncNum('d-nslp-n','d-nslp');dUpd()"></div></div>
-      <div class="ctrl-row"><div class="ctrl-label">R (receptor reserve)</div><div class="slider-row"><input type="range" min="-2" max="2" step="0.1" value="0" data-lindisp="1" id="d-R" oninput="syncSlider('d-R','d-R-n');dUpd()"><input class="numbox" type="number" step="any" id="d-R-n" value="1" oninput="syncNum('d-R-n','d-R');dUpd()"></div></div>
+      <div class="ctrl-row"><div class="ctrl-label">R (receptor reserve)</div><div class="slider-row"><input type="range" min="-2" max="2" step="any" value="0" data-lindisp="1" id="d-R" oninput="syncSlider('d-R','d-R-n');dUpd()"><input class="numbox" type="number" step="any" id="d-R-n" value="1" oninput="syncNum('d-R-n','d-R');dUpd()"></div></div>
     </div>
   </div>
   <div class="card">
@@ -306,9 +310,9 @@ select:focus{outline:2px solid #185FA5;outline-offset:1px}
       <svg class="acc-chevron" id="i-sys-chev" viewBox="0 0 14 14" fill="none" stroke="#9ca3af" stroke-width="1.5"><polyline points="2,4 7,10 12,4"/></svg>
     </button>
     <div class="acc-body" id="i-sys-body">
-      <div class="ctrl-row" id="i-L-row"><div class="ctrl-label">L (log scale) <span id="i-L-pct" style="font-size:11px;color:#9ca3af;font-weight:400">(≈2.0% basal)</span></div><div class="slider-row"><input type="range" min="-2.3" max="-0.3" step="0.1" value="-1.7" data-lindisp="1" id="i-basal" oninput="syncSlider('i-basal','i-basal-n');iUpd()"><input class="numbox" type="number" step="any" id="i-basal-n" value="0.02" oninput="syncNum('i-basal-n','i-basal');iUpd()"></div></div>
+      <div class="ctrl-row" id="i-L-row"><div class="ctrl-label">L <span id="i-L-pct" style="font-size:11px;color:#9ca3af;font-weight:400">(≈2.0% basal)</span></div><div class="slider-row"><input type="range" min="-2.3" max="-0.3" step="any" value="-1.7" data-lindisp="1" id="i-basal" oninput="syncSlider('i-basal','i-basal-n');iUpd()"><input class="numbox" type="number" step="any" id="i-basal-n" value="0.02" oninput="syncNum('i-basal-n','i-basal');iUpd()"></div></div>
       <div class="ctrl-row"><div class="ctrl-label">n (transducer slope)</div><div class="slider-row"><input type="range" min="0.3" max="3" step="0.1" value="1" id="i-nslp" oninput="syncSlider('i-nslp','i-nslp-n');iUpd()"><input class="numbox" type="number" step="0.1" id="i-nslp-n" value="1" oninput="syncNum('i-nslp-n','i-nslp');iUpd()"></div></div>
-      <div class="ctrl-row"><div class="ctrl-label">R (receptor reserve)</div><div class="slider-row"><input type="range" min="-2" max="4" step="0.1" value="0" data-lindisp="1" id="i-R" oninput="syncSlider('i-R','i-R-n');iUpd()"><input class="numbox" type="number" step="any" id="i-R-n" value="1" oninput="syncNum('i-R-n','i-R');iUpd()"></div></div>
+      <div class="ctrl-row"><div class="ctrl-label">R (receptor reserve)</div><div class="slider-row"><input type="range" min="-2" max="4" step="any" value="0" data-lindisp="1" id="i-R" oninput="syncSlider('i-R','i-R-n');iUpd()"><input class="numbox" type="number" step="any" id="i-R-n" value="1" oninput="syncNum('i-R-n','i-R');iUpd()"></div></div>
     </div>
   </div>
 
@@ -320,7 +324,7 @@ select:focus{outline:2px solid #185FA5;outline-offset:1px}
     <div class="acc-body open" id="i-dA-body">
       <div class="ctrl-row" style="margin-bottom:.4rem"><div class="ctrl-label">Name</div><input type="text" id="drugA-name" value="Drug A" style="font-size:12px;padding:3px 6px;border-radius:6px;border:1px solid #d1d5db;background:#fff;color:#1a1a1a;width:100%" oninput="drugAName=this.value;iUpd()"></div>
       <div class="ctrl-row"><div class="ctrl-label">log K<sub>i</sub> (M)</div><div class="slider-row"><input type="range" min="-10" max="-4" step="0.1" value="-7" id="lKA" oninput="syncSlider('lKA','lKA-n');iUpd()"><input class="numbox" type="number" step="0.1" id="lKA-n" value="-7" oninput="syncNum('lKA-n','lKA');iUpd()"></div></div>
-      <div class="ctrl-row" id="i-alphaA-row"><div class="ctrl-label">&alpha;<sub>A</sub> (intrinsic efficacy, log)</div><div class="slider-row"><input type="range" min="-2" max="4" step="0.1" value="2" data-lindisp="1" id="i-alphaA-log" oninput="syncSlider('i-alphaA-log','i-alphaA-log-n');iUpd()"><input class="numbox" type="number" step="any" id="i-alphaA-log-n" value="100" oninput="syncNum('i-alphaA-log-n','i-alphaA-log');iUpd()"></div></div>
+      <div class="ctrl-row" id="i-alphaA-row"><div class="ctrl-label">&alpha;<sub>A</sub> (intrinsic efficacy)</div><div class="slider-row"><input type="range" min="-2" max="4" step="any" value="2" data-lindisp="1" id="i-alphaA-log" oninput="syncSlider('i-alphaA-log','i-alphaA-log-n');iUpd()"><input class="numbox" type="number" step="any" id="i-alphaA-log-n" value="100" oninput="syncNum('i-alphaA-log-n','i-alphaA-log');iUpd()"></div></div>
       <div class="ctrl-row" id="effA-row" style="display:none"><div class="ctrl-label">&varepsilon;<sub>A</sub> (intrinsic efficacy, %)</div><div class="slider-row"><input type="range" min="1" max="99" step="1" value="80" id="effA" oninput="syncSlider('effA','effA-n');iUpd()"><input class="numbox" type="number" step="1" id="effA-n" value="80" oninput="syncNum('effA-n','effA');iUpd()"></div></div>
     </div>
   </div>
@@ -336,14 +340,14 @@ select:focus{outline:2px solid #185FA5;outline-offset:1px}
       <div id="irrev-model-row" style="display:none;margin-bottom:.55rem"><div class="ctrl-label">Model</div><select id="irrev-submode" onchange="setIrrevSubMode(this.value)" style="font-size:12px;padding:3px 6px;border-radius:6px;border:1px solid #d1d5db;background:#fff;color:#1a1a1a;width:100%"><option value="simple" selected>Simple (Furchgott)</option><option value="hall">Hall (2000) — two-state</option></select></div>
       <div class="ctrl-row"><div class="ctrl-label" id="lKB-label">log K<sub>i</sub> (M)</div><div class="slider-row"><input type="range" min="-10" max="-4" step="0.1" value="-8" id="lKB" oninput="syncSlider('lKB','lKB-n');iUpd()"><input class="numbox" type="number" step="0.1" id="lKB-n" value="-8" oninput="syncNum('lKB-n','lKB');iUpd()"></div></div>
       <div id="sharedBCtrls">
-        <div class="ctrl-row" id="allost-beta-row"><div class="ctrl-label">&beta; (Drug B intrinsic efficacy, log)</div><div class="slider-row"><input type="range" min="-2" max="2" step="0.1" value="0" data-lindisp="1" id="allost-beta-log" oninput="syncSlider('allost-beta-log','allost-beta-log-n');iUpd()"><input class="numbox" type="number" step="any" id="allost-beta-log-n" value="1" oninput="syncNum('allost-beta-log-n','allost-beta-log');iUpd()"></div></div>
+        <div class="ctrl-row" id="allost-beta-row"><div class="ctrl-label">&beta; (Drug B intrinsic efficacy)</div><div class="slider-row"><input type="range" min="-2" max="2" step="any" value="0" data-lindisp="1" id="allost-beta-log" oninput="syncSlider('allost-beta-log','allost-beta-log-n');iUpd()"><input class="numbox" type="number" step="any" id="allost-beta-log-n" value="1" oninput="syncNum('allost-beta-log-n','allost-beta-log');iUpd()"></div></div>
         <div class="ctrl-row" id="effB-row" style="display:none"><div class="ctrl-label">&varepsilon;<sub>B</sub> (Drug B efficacy, %)</div><div class="slider-row"><input type="range" min="0" max="99" step="1" value="0" id="effB" oninput="syncSlider('effB','effB-n');iUpd()"><input class="numbox" type="number" step="1" id="effB-n" value="0" oninput="syncNum('effB-n','effB');iUpd()"></div></div>
         <div id="comp-beta-hint" class="hint" style="display:none">&beta; = 0 &rarr; neutral antagonist</div>
         <div id="gaddum-effB-hint" class="hint" style="display:none">0% = neutral antagonist</div>
       </div>
       <div id="allostOnlyCtrls" style="display:none">
-        <div class="ctrl-row"><div class="ctrl-label" id="allost-gamma-label">&gamma; (binding cooperativity, log)</div><div class="slider-row"><input type="range" min="-2" max="2" step="0.1" value="0" data-lindisp="1" id="allost-gamma-log" oninput="syncSlider('allost-gamma-log','allost-gamma-log-n');iUpd()"><input class="numbox" type="number" step="any" id="allost-gamma-log-n" value="1" oninput="syncNum('allost-gamma-log-n','allost-gamma-log');iUpd()"></div></div>
-        <div class="ctrl-row"><div class="ctrl-label" id="allost-delta-label">&delta; (activation cooperativity, log)</div><div class="slider-row"><input type="range" min="-2" max="2" step="0.1" value="0" data-lindisp="1" id="allost-delta-log" oninput="syncSlider('allost-delta-log','allost-delta-log-n');iUpd()"><input class="numbox" type="number" step="any" id="allost-delta-log-n" value="1" oninput="syncNum('allost-delta-log-n','allost-delta-log');iUpd()"></div></div>
+        <div class="ctrl-row"><div class="ctrl-label" id="allost-gamma-label">&gamma; (binding cooperativity)</div><div class="slider-row"><input type="range" min="-2" max="2" step="any" value="0" data-lindisp="1" id="allost-gamma-log" oninput="syncSlider('allost-gamma-log','allost-gamma-log-n');iUpd()"><input class="numbox" type="number" step="any" id="allost-gamma-log-n" value="1" oninput="syncNum('allost-gamma-log-n','allost-gamma-log');iUpd()"></div></div>
+        <div class="ctrl-row"><div class="ctrl-label" id="allost-delta-label">&delta; (activation cooperativity)</div><div class="slider-row"><input type="range" min="-2" max="2" step="any" value="0" data-lindisp="1" id="allost-delta-log" oninput="syncSlider('allost-delta-log','allost-delta-log-n');iUpd()"><input class="numbox" type="number" step="any" id="allost-delta-log-n" value="1" oninput="syncNum('allost-delta-log-n','allost-delta-log');iUpd()"></div></div>
       </div>
       <div id="irrevCtrls" style="display:none"><div id="irrev-q-hint" class="hint" style="margin-top:.2rem">q = [B]/(K<sub>i</sub>+[B]) &mdash; E<sub>max</sub> depression</div></div>
       <div class="sep"></div>
@@ -720,6 +724,7 @@ function linDisplay(logVal){
 }
 function v(id){
   var el=g(id);if(!el)return NaN;
+  if(!el.step||el.step==='any')return parseFloat(el.value)||0;
   var dec=stepDecimals(el);
   return +(parseFloat(el.value).toFixed(dec))||0;
 }
@@ -733,10 +738,10 @@ function syncNum(nId,sId){
   var val=parseFloat(n.value);
   if(isNaN(val))return;
   if(s.dataset.lindisp){
-    if(val<=0)return;
+    if(val<=0)val=Math.pow(10,parseFloat(s.min));
     var logVal=Math.max(parseFloat(s.min),Math.min(parseFloat(s.max),Math.log10(val)));
     s.value=logVal;
-    n.value=linDisplay(v(sId));
+    n.value=linDisplay(parseFloat(s.value));
   }else{
     var mn=parseFloat(s.min),mx=parseFloat(s.max);
     val=Math.max(mn,Math.min(mx,val));
@@ -746,8 +751,42 @@ function syncNum(nId,sId){
 }
 function setSlVal(id,val){
   var el=g(id);if(el)el.value=val;
+  if(el&&el.dataset.lindisp)el._prevLog=val;
   var nel=g(id+'-n');
-  if(nel){if(el&&el.dataset.lindisp)nel.value=linDisplay(val);else nel.value=val;}
+  if(nel){if(el&&el.dataset.lindisp){nel.value=linDisplay(val);}else nel.value=val;}
+}
+function initLinDispControls(){
+  document.querySelectorAll('input[type=range][data-lindisp]').forEach(function(s){
+    var n=document.getElementById(s.id+'-n');if(!n)return;
+    var kdown=false,applying=false;
+    s._prevLog=parseFloat(s.value);
+    function applyStep(dir){
+      var curLin=Math.pow(10,parseFloat(s.value));
+      var exp=Math.floor(Math.log10(Math.max(curLin,1e-10))+1e-9);
+      if(dir<0&&Math.abs(curLin-Math.pow(10,exp))<curLin*1e-9)exp--;
+      var step=Math.pow(10,exp);
+      var linMin=Math.pow(10,parseFloat(s.min));
+      var newLin=Math.max(linMin,curLin+dir*step);
+      var newLog=Math.max(parseFloat(s.min),Math.min(parseFloat(s.max),Math.log10(newLin)));
+      s.value=newLog;s._prevLog=newLog;
+      applying=true;
+      s.dispatchEvent(new Event('input',{bubbles:true}));
+      applying=false;
+    }
+    s.addEventListener('input',function(){if(!applying)s._prevLog=parseFloat(s.value);});
+    n.addEventListener('keydown',function(e){
+      if(e.key==='ArrowUp'){e.preventDefault();applyStep(1);return;}
+      if(e.key==='ArrowDown'){e.preventDefault();applyStep(-1);return;}
+      if(e.key.length===1||e.key==='Backspace'||e.key==='Delete')kdown=true;
+    });
+    n.addEventListener('input',function(){
+      if(kdown){kdown=false;s._prevLog=parseFloat(s.value);return;}
+      var newLog=parseFloat(s.value);
+      if(newLog===s._prevLog)return;
+      var dir=newLog>s._prevLog?1:-1;
+      s.value=s._prevLog;applyStep(dir);
+    });
+  });
 }
 function toggleAcc(bId,cId){
   var b=g(bId),c=g(cId);if(!b||!c)return;
@@ -755,10 +794,32 @@ function toggleAcc(bId,cId){
 }
 function snapHalf(x,d){return(d<0?Math.floor(x/0.5):Math.ceil(x/0.5))*0.5;}
 function setSchildSquare(){var o=g('schildOuter');if(!o)return;var w=o.offsetWidth;if(w>0)o.style.height=w+'px';}
+var _exportPending=null;
 function exportPNG(id,fn){
+  _exportPending={id:id,fn:fn};
+  var m=g('export-modal');if(m)m.style.display='flex';
+}
+function closeExportModal(){
+  var m=g('export-modal');if(m)m.style.display='none';
+  _exportPending=null;
+}
+function doExport(ratio){
+  var pending=_exportPending;
+  closeExportModal();
+  if(!pending)return;
+  var id=pending.id,fn=pending.fn;
   var c=g(id);if(!c)return;
+  var chart=Chart.getChart(c);
+  if(chart&&ratio!=='original'){
+    var tw,th,w=c.width,h=c.height;
+    if(ratio==='square'){var s=Math.max(w,h);tw=s;th=s;}
+    else{tw=w;th=Math.round(w*9/16);}
+    c.style.visibility='hidden';
+    chart.resize(tw,th);
+  }
   var l=document.createElement('a');l.href=c.toDataURL('image/png');
   l.download=(fn||'chart')+'.png';document.body.appendChild(l);l.click();document.body.removeChild(l);
+  if(chart&&ratio!=='original'){chart.resize();c.style.visibility='';}
 }
 function switchTab(t){
   g('tab-drugs').classList.toggle('active',t==='drugs');
@@ -766,6 +827,7 @@ function switchTab(t){
   g('tab-gen').classList.toggle('active',t==='gen');
   var kTab=g('tab-kinetics'); if(kTab)kTab.classList.toggle('active',t==='kinetics');
   var rTab=g('tab-resources'); if(rTab)rTab.classList.toggle('active',t==='resources');
+  var genTitle=g('gen-header-title');if(genTitle)genTitle.style.display=t==='gen'?'':'none';
   document.querySelectorAll('.tab').forEach(function(tb){
     var id=tb.getAttribute('onclick')||'';
     tb.classList.toggle('active',id.indexOf("'"+t+"'")>-1);
@@ -902,9 +964,9 @@ function setAllostSubMode(m){
   show('allost-beta-row',isHall);show('effB-row',!isHall);
   show('i-L-row',isHall);
   var gLbl=g('allost-gamma-label');
-  if(gLbl)gLbl.innerHTML=isHall?'&gamma; (binding cooperativity, log)':'&alpha; (binding cooperativity, log)';
+  if(gLbl)gLbl.innerHTML=isHall?'&gamma; (binding cooperativity)':'&alpha; (binding cooperativity)';
   var dLbl=g('allost-delta-label');
-  if(dLbl)dLbl.innerHTML=isHall?'&delta; (activation cooperativity, log)':'&beta; (functional cooperativity, log)';
+  if(dLbl)dLbl.innerHTML=isHall?'&delta; (activation cooperativity)':'&beta; (functional cooperativity)';
   if(isHall){
     setSlVal('i-basal',-2);setSlVal('i-R',1);setSlVal('i-nslp',1);
     setSlVal('i-alphaA-log',2.5);setSlVal('allost-gamma-log',-1);setSlVal('allost-delta-log',-1);
@@ -1367,7 +1429,7 @@ function adjGenN(d){genN=Math.max(0,Math.min(5,genN+d));g('genN-v').textContent=
 function genShapeChange(){
   var shape=g('gen-shape').value;
   var defaults={
-    sigmoidal: {max:100,min:0,slope:1},
+    sigmoidal: {max:100,min:0,slope:2.5},
     bell:      {max:75, min:0,slope:3},
     parabolic: {max:80, min:20,slope:1.8},
     linear:    {max:100,min:0,slope:1},
@@ -1408,7 +1470,26 @@ function genMakeDataset(shape,xPoints,pos,ceilVal,floorVal,k,invert,color,dash){
   var data=[];
   var inSeg=false;
 
+  var leftCutX=xPoints[0],rightCutX=xPoints[xPoints.length-1];
+  if(shape==='sigmoidal'){
+    var ySpan=Math.abs(ceilVal-floorVal);
+    var threshold=0.01*ySpan;
+    var wPts=Math.round(xPoints.length*0.1);
+    var allY=xPoints.map(function(x){
+      var raw=genComputeY(shape,x-pos,k);
+      if(invert)raw=1-raw;
+      return floorVal+(ceilVal-floorVal)*raw;
+    });
+    for(var li=0;li<xPoints.length-wPts;li++){
+      if(Math.abs(allY[li+wPts]-allY[li])>threshold){leftCutX=xPoints[li];break;}
+    }
+    for(var ri=xPoints.length-1;ri>=wPts;ri--){
+      if(Math.abs(allY[ri]-allY[ri-wPts])>threshold){rightCutX=xPoints[ri];break;}
+    }
+  }
+
   xPoints.forEach(function(x){
+    if(shape==='sigmoidal'&&(x<leftCutX||x>rightCutX))return;
     var xShifted=x-pos;
     var raw=genComputeY(shape,xShifted,k);
     if(invert) raw=1-raw;
@@ -1770,6 +1851,7 @@ window.addEventListener('resize',function(){
 })();
 buildDrugCards();
 dUpd();
+initLinDispControls();
 setMode('comp');
 setTimeout(function(){
   setSchildSquare();iUpd();genUpd();
@@ -1811,12 +1893,23 @@ setTimeout(function(){
     <button class="about-close" onclick="closeAbout()" aria-label="Close">&times;</button>
     <div class="about-title">About</div>
     <div class="about-body">
-      <p>PharmExplorer v2.1.1 &nbsp;2026</p>
+      <p>PharmExplorer v2.2 &nbsp;2026</p>
       <p>Created by Shawn Flynn</p>
       <p>Code generated using Claude Sonnet 4.6</p>
     </div>
   </div>
 </div>
+</div>
+<div id="export-modal" style="display:none;position:fixed;top:0;left:0;width:100%;height:100%;background:rgba(0,0,0,0.35);z-index:9999;align-items:center;justify-content:center;">
+  <div style="background:#fff;border-radius:10px;padding:20px 24px;box-shadow:0 4px 24px rgba(0,0,0,0.18);text-align:center;min-width:200px;">
+    <div style="font-size:13px;font-weight:600;color:#1a1a1a;margin-bottom:12px;">Export as PNG</div>
+    <div style="display:flex;flex-direction:column;gap:8px;">
+      <button class="export-btn" onclick="doExport('original')">Original size</button>
+      <button class="export-btn" onclick="doExport('square')">Square (1:1)</button>
+      <button class="export-btn" onclick="doExport('wide')">Wide (16:9)</button>
+    </div>
+    <button onclick="closeExportModal()" style="margin-top:10px;font-size:12px;color:#6b7280;background:none;border:none;cursor:pointer;padding:4px 8px;">Cancel</button>
+  </div>
 </div>
 </body>
 </html>

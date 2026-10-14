@@ -1104,14 +1104,20 @@ function setAllostSubMode(m){
 function setMode(m){
   var sel=g('header-modMode');if(sel)sel.value=m;
   var iPanel=g('tab-inter'),hPanel=g('tab-hemi');
+  /* only swap panels when the interactions tab is the one showing (setMode also runs at page load) */
+  var interShown=(iPanel&&iPanel.classList.contains('active'))||(hPanel&&hPanel.classList.contains('active'));
   if(m==='hemi'){
-    if(iPanel)iPanel.classList.remove('active');
-    if(hPanel)hPanel.classList.add('active');
+    if(interShown){
+      if(iPanel)iPanel.classList.remove('active');
+      if(hPanel)hPanel.classList.add('active');
+    }
     setTimeout(function(){setSchildSquareHe();heUpd();},50);
     return;
   }
-  if(iPanel)iPanel.classList.add('active');
-  if(hPanel)hPanel.classList.remove('active');
+  if(interShown){
+    if(iPanel)iPanel.classList.add('active');
+    if(hPanel)hPanel.classList.remove('active');
+  }
   var sharedB=g('sharedBCtrls');
   if(sharedB)sharedB.style.display=m==='irrev'?'none':'block';
   var allostOnly=g('allostOnlyCtrls');
